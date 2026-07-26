@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XAUUSD Dashboard Starter</title>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<style>html,body,#chart{margin:0;height:100%;background:#000}#hud{position:absolute;top:10px;left:10px;color:#fff;font-family:Arial}</style>
+</head><body><div id="hud">XAUUSD Dashboard Starter<br>Replace demo data with your API.</div><div id="chart"></div>
+<script>
+const chart=LightweightCharts.createChart(document.getElementById('chart'),{layout:{background:{color:'#000'},textColor:'#ccc'}});
+const s=chart.addCandlestickSeries();
+let data=[],t=Math.floor(Date.now()/1000)-300*200,p=3350;
+for(let i=0;i<200;i++){let o=p,c=o+(Math.random()-0.5)*8,h=Math.max(o,c)+Math.random()*3,l=Math.min(o,c)-Math.random()*3;data.push({time:t+i*300,open:o,high:h,low:l,close:c});p=c;}
+s.setData(data);
+window.addEventListener('resize',()=>chart.resize(innerWidth,innerHeight));
+chart.resize(innerWidth,innerHeight);
+</script></body></html>
